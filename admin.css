@@ -1,0 +1,47 @@
+
+/* =========================================
+   MARGINAL NEWS
+   PREMIUM ADMIN DASHBOARD
+========================================= */
+
+:root {
+  --red: #c4161c;
+  --red-dark: #a20e14;
+  --black: #171717;
+  --dark: #252525;
+  --white: #ffffff;
+  --background: #f4f5f7;
+  --gray: #777777;
+  --border: #e4e5e7;
+  --green: #16834a;
+  --orange: #d97706;
+  --shadow: 0 5px 22px rgba(0,0,0,.045);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit
