@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Newsroom Admin | Marginal News</title>
+
+  <meta name="robots" content="noindex,nofollow">
+
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="admin-header">
+
+    <a href="../" class="admin-brand">
+      <span>MARGINAL</span> NEWS
+      <small>NEWSROOM MANAGEMENT</small>
+    </a>
+
+    <div class="header-actions hidden" id="headerActions">
+
+      <a href="../" target="_blank" class="view-site">
+        View Website ↗
+      </a>
+
+      <button id="logoutBtn" class="logout-btn">
+        Logout
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- LOGIN -->
+
+  <main>
+
+    <section class="login-container" id="loginSection">
+
+      <div class="login-card">
+
+        <div class="login-logo">
+          MN
+        </div>
+
+        <p class="login-label">
+          MARGINAL NEWSROOM
+        </p>
+
+        <h1>Admin Login</h1>
+
+        <p class="login-description">
+          Sign in to manage your newsroom and publish stories.
+        </p>
+
+        <form id="loginForm">
+
+          <label for="adminPassword">
+            Administrator Password
+          </label>
+
+          <input
+            type="password"
+            id="adminPassword"
+            placeholder="Enter your admin password"
+            required
+            autocomplete="current-password"
+          >
+
+          <button type="submit" id="loginBtn">
+            Sign In to Dashboard
+          </button>
+
+        </form>
+
+        <p class="form-message" id="loginMessage" aria-live="polite"></p>
+
+        <a href="../" class="back-home">
+          ← Back to Homepage
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard hidden" id="dashboardSection">
+
+      <!-- WELCOME -->
+
+      <div class="dashboard-welcome">
+
+        <div>
+          <p class="dashboard-label">NEWSROOM CONTROL CENTER</p>
+
+          <h1>Welcome to the Newsroom</h1>
+
+          <p>
+            Manage your stories, editorial content and publications.
+          </p>
+        </div>
+
+        <div class="dashboard-date" id="dashboardDate"></div>
+
+      </div>
+
+
+      <!-- STATISTICS -->
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <span>Total Stories</span>
+          <strong id="totalStories">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>Published</span>
+          <strong id="publishedStories">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>Drafts</span>
+          <strong id="draftStories">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>Scheduled</span>
+          <strong id="scheduledStories">0</strong>
+        </div>
+
+      </div>
+
+
+      <!-- DASHBOARD NAVIGATION -->
+
+      <div class="dashboard-toolbar">
+
+        <div>
+          <h2>News Management</h2>
+          <p>Create and manage your news publications.</p>
+        </div>
+
+        <div class="toolbar-actions">
+
+          <button id="refreshBtn" class="secondary-btn">
+            ↻ Refresh
+          </button>
+
+          <button id="newStoryBtn" class="primary-btn">
+            + Create New Story
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- STORY EDITOR -->
+
+      <section class="editor-card" id="editorSection">
+
+        <div class="editor-heading">
+
+          <div>
+            <span class="dashboard-label">CONTENT MANAGEMENT</span>
+            <h2 id="editorTitle">Create New Story</h2>
+          </div>
+
+          <button id="cancelEditBtn" class="close-editor">
+            ✕
+          </button>
+
+        </div>
+
+
+        <form id="storyForm">
+
+          <input type="hidden" id="storyId">
+
+
+          <div class="form-group">
+
+            <label for="storyTitle">
+              News Headline *
+            </label>
+
+            <input
+              type="text"
+              id="storyTitle"
+              maxlength="180"
+              placeholder="Enter your news headline"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="storySummary">
+              Short Summary *
+            </label>
+
+            <textarea
+              id="storySummary"
+              maxlength="500"
+              rows="3"
+              placeholder="Write a short news introduction"
+              required
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="storyBody">
+              Full News Content *
+            </label>
+
+            <textarea
+              id="storyBody"
+              rows="12"
+              placeholder="Write the complete news report..."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label for="storyCategory">
+                News Category *
+              </label>
+
+              <select id="storyCategory" required>
+
+                <option value="bd">Bangladesh</option>
+                <option value="intl">International</option>
+                <option value="geo">Geopolitics</option>
+                <option value="eco">Economy</option>
+                <option value="sci">Science & Technology</option>
+                <option value="env">Environment</option>
+                <option value="edu">Education</option>
+                <option value="fact">Fact Check</option>
+                <option value="read">Long Read</option>
+                <option value="op">Opinion</option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="storyAuthor">
+                Author / Reporter
+              </label>
+
+              <input
+                type="text"
+                id="storyAuthor"
+                placeholder="Marginal News Desk"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="storyImage">
+              Featured Image URL
+            </label>
+
+            <input
+              type="url"
+              id="storyImage"
+              placeholder="https://example.com/image.jpg"
+            >
+
+            <small>
+              Enter a publicly accessible image URL.
+            </small>
+
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label for="storyStatus">
+                Publication Status
+              </label>
+
+              <select id="storyStatus">
+
+                <option value="draft">Save as Draft</option>
+                <option value="published">Publish Now</option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="publishAt">
+                Schedule Publication
+              </label>
+
+              <input
+                type="datetime-local"
+                id="publishAt"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="checkbox-group">
+
+            <label>
+              <input type="checkbox" id="storyFeatured">
+              Featured Story (Homepage Lead)
+            </label>
+
+            <label>
+              <input type="checkbox" id="storyEditorsPick">
+              Editor's Pick
+            </label>
+
+          </div>
+
+
+          <div class="editor-actions">
+
+            <button type="submit" class="primary-btn" id="saveStoryBtn">
+              Save Story
+            </button>
+
+            <button type="button" class="secondary-btn" id="clearFormBtn">
+              Clear Form
+            </button>
+
+          </div>
+
+          <p id="storyMessage" class="form-message" aria-live="polite"></p>
+
+        </form>
+
+      </section>
+
+
+      <!-- STORY LIST -->
+
+      <section class="stories-card">
+
+        <div class="stories-heading">
+
+          <div>
+            <h2>Published & Draft Stories</h2>
+            <p>Manage your newsroom content.</p>
+          </div>
+
+          <select id="storyFilter">
+
+            <option value="all">All Stories</option>
+            <option value="published">Published</option>
+            <option value="draft">Drafts</option>
+
+          </select>
+
+        </div>
+
+
+        <div id="storiesList">
+
+          <div class="loading-message">
+            Loading stories...
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- NEWSLETTER MANAGEMENT -->
+
+      <section class="newsletter-admin-card">
+
+        <div>
+          <h2>Newsletter Subscribers</h2>
+
+          <p>
+            Export your newsletter subscriber list.
+          </p>
+        </div>
+
+        <button id="downloadSubscribersBtn" class="secondary-btn">
+          ↓ Download CSV
+        </button>
+
+      </section>
+
+
+      <!-- FOOTER -->
+
+      <footer class="admin-footer">
+
+        <p>
+          © 2026 Marginal News. Newsroom Management System.
+        </p>
+
+        <p>
+          Voices Beyond the Headlines.
+        </p>
+
+      </footer>
+
+    </section>
+
+  </main>
+
+
+  <!-- ADMIN JAVASCRIPT -->
+
+  <script src="admin.js"></script>
+
+</body>
+</html>
